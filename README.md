@@ -1,10 +1,11 @@
 # Calorie Me
 
+<img src="https://github.com/jake-landersweb/calorie_me/blob/main/assets/AppIcons/appstore.png" width=300px>
+
 ## About
 
 Calorie me is a simple application created with SwiftUI to keep a running track of your calories for a given day. Currently, a user selects from a calendar view to select a day, then has a list of the items they have created for that day. You can add, edit, and delete these items, which are sorted by date.
 
-<img src="https://github.com/jake-landersweb/calorie_me/blob/main/assets/AppIcons/appstore.png" width=300px>
 <p float="left">
     <img src="https://github.com/jake-landersweb/calorie_me/blob/main/assets/iphone_home.jpeg" width=250px>
     <img src="https://github.com/jake-landersweb/calorie_me/blob/main/assets/iphone_day.jpeg" width=250px>
