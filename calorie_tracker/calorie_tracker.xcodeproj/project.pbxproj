@@ -1,0 +1,553 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A6466ED027B1D8F50014B96F /* small_label.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6466ECF27B1D8F50014B96F /* small_label.swift */; };
+		A675AA8F27B0F642001B137E /* calendar_view.swift in Sources */ = {isa = PBXBuildFile; fileRef = A675AA8E27B0F642001B137E /* calendar_view.swift */; };
+		A675AA9127B0FB7E001B137E /* calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A675AA9027B0FB7E001B137E /* calendar.swift */; };
+		A675AA9327B1179F001B137E /* calendar_cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A675AA9227B1179F001B137E /* calendar_cell.swift */; };
+		A6F9C3C327AF4252002B7680 /* calorie_trackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F9C3B327AF4251002B7680 /* calorie_trackerApp.swift */; };
+		A6F9C3C427AF4252002B7680 /* calorie_trackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F9C3B327AF4251002B7680 /* calorie_trackerApp.swift */; };
+		A6F9C3C527AF4252002B7680 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F9C3B427AF4251002B7680 /* ContentView.swift */; };
+		A6F9C3C627AF4252002B7680 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F9C3B427AF4251002B7680 /* ContentView.swift */; };
+		A6F9C3C727AF4252002B7680 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6F9C3B527AF4252002B7680 /* Assets.xcassets */; };
+		A6F9C3C827AF4252002B7680 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6F9C3B527AF4252002B7680 /* Assets.xcassets */; };
+		A6F9C3D427AF4291002B7680 /* calorie_item.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F9C3D327AF4291002B7680 /* calorie_item.swift */; };
+		A6F9C3D627AF49D8002B7680 /* data_model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F9C3D527AF49D8002B7680 /* data_model.swift */; };
+		A6F9C3DA27AF5950002B7680 /* index.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F9C3D927AF5950002B7680 /* index.swift */; };
+		A6F9C3DC27AF5A7F002B7680 /* item_cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F9C3DB27AF5A7F002B7680 /* item_cell.swift */; };
+		A6F9C3DF27AF5B6E002B7680 /* colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F9C3DE27AF5B6E002B7680 /* colors.swift */; };
+		A6F9C3E427AF61C4002B7680 /* ce_item.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F9C3E327AF61C4002B7680 /* ce_item.swift */; };
+		A6F9C3E627AF6602002B7680 /* custom_field.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F9C3E527AF6601002B7680 /* custom_field.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A6466ECF27B1D8F50014B96F /* small_label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = small_label.swift; sourceTree = "<group>"; };
+		A675AA8E27B0F642001B137E /* calendar_view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calendar_view.swift; sourceTree = "<group>"; };
+		A675AA9027B0FB7E001B137E /* calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calendar.swift; sourceTree = "<group>"; };
+		A675AA9227B1179F001B137E /* calendar_cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calendar_cell.swift; sourceTree = "<group>"; };
+		A6F9C3B327AF4251002B7680 /* calorie_trackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calorie_trackerApp.swift; sourceTree = "<group>"; };
+		A6F9C3B427AF4251002B7680 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A6F9C3B527AF4252002B7680 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A6F9C3BA27AF4252002B7680 /* calorie_tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = calorie_tracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6F9C3C027AF4252002B7680 /* calorie_tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = calorie_tracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6F9C3C227AF4252002B7680 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		A6F9C3D327AF4291002B7680 /* calorie_item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calorie_item.swift; sourceTree = "<group>"; };
+		A6F9C3D527AF49D8002B7680 /* data_model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = data_model.swift; sourceTree = "<group>"; };
+		A6F9C3D927AF5950002B7680 /* index.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = index.swift; sourceTree = "<group>"; };
+		A6F9C3DB27AF5A7F002B7680 /* item_cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = item_cell.swift; sourceTree = "<group>"; };
+		A6F9C3DE27AF5B6E002B7680 /* colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = colors.swift; sourceTree = "<group>"; };
+		A6F9C3E327AF61C4002B7680 /* ce_item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ce_item.swift; sourceTree = "<group>"; };
+		A6F9C3E527AF6601002B7680 /* custom_field.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = custom_field.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A6F9C3B727AF4252002B7680 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A6F9C3BD27AF4252002B7680 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A6F9C3AD27AF4251002B7680 = {
+			isa = PBXGroup;
+			children = (
+				A6F9C3B227AF4251002B7680 /* Shared */,
+				A6F9C3C127AF4252002B7680 /* macOS */,
+				A6F9C3BB27AF4252002B7680 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A6F9C3B227AF4251002B7680 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				A6F9C3E227AF5FB8002B7680 /* custom_views */,
+				A6F9C3DD27AF5B64002B7680 /* utils */,
+				A6F9C3D727AF592D002B7680 /* views */,
+				A6F9C3D227AF4276002B7680 /* data */,
+				A6F9C3D127AF426A002B7680 /* client */,
+				A6F9C3B327AF4251002B7680 /* calorie_trackerApp.swift */,
+				A6F9C3B427AF4251002B7680 /* ContentView.swift */,
+				A6F9C3B527AF4252002B7680 /* Assets.xcassets */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		A6F9C3BB27AF4252002B7680 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A6F9C3BA27AF4252002B7680 /* calorie_tracker.app */,
+				A6F9C3C027AF4252002B7680 /* calorie_tracker.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A6F9C3C127AF4252002B7680 /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				A6F9C3C227AF4252002B7680 /* macOS.entitlements */,
+			);
+			path = macOS;
+			sourceTree = "<group>";
+		};
+		A6F9C3D127AF426A002B7680 /* client */ = {
+			isa = PBXGroup;
+			children = (
+				A6F9C3D527AF49D8002B7680 /* data_model.swift */,
+			);
+			path = client;
+			sourceTree = "<group>";
+		};
+		A6F9C3D227AF4276002B7680 /* data */ = {
+			isa = PBXGroup;
+			children = (
+				A6F9C3D327AF4291002B7680 /* calorie_item.swift */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+		A6F9C3D727AF592D002B7680 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				A6F9C3DB27AF5A7F002B7680 /* item_cell.swift */,
+				A6F9C3D827AF593F002B7680 /* ios */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		A6F9C3D827AF593F002B7680 /* ios */ = {
+			isa = PBXGroup;
+			children = (
+				A6F9C3E327AF61C4002B7680 /* ce_item.swift */,
+				A6F9C3D927AF5950002B7680 /* index.swift */,
+				A675AA8E27B0F642001B137E /* calendar_view.swift */,
+				A675AA9227B1179F001B137E /* calendar_cell.swift */,
+			);
+			path = ios;
+			sourceTree = "<group>";
+		};
+		A6F9C3DD27AF5B64002B7680 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				A6F9C3DE27AF5B6E002B7680 /* colors.swift */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
+		A6F9C3E227AF5FB8002B7680 /* custom_views */ = {
+			isa = PBXGroup;
+			children = (
+				A6F9C3E527AF6601002B7680 /* custom_field.swift */,
+				A675AA9027B0FB7E001B137E /* calendar.swift */,
+				A6466ECF27B1D8F50014B96F /* small_label.swift */,
+			);
+			path = custom_views;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A6F9C3B927AF4252002B7680 /* calorie_tracker (iOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A6F9C3CB27AF4252002B7680 /* Build configuration list for PBXNativeTarget "calorie_tracker (iOS)" */;
+			buildPhases = (
+				A6F9C3B627AF4252002B7680 /* Sources */,
+				A6F9C3B727AF4252002B7680 /* Frameworks */,
+				A6F9C3B827AF4252002B7680 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "calorie_tracker (iOS)";
+			productName = "calorie_tracker (iOS)";
+			productReference = A6F9C3BA27AF4252002B7680 /* calorie_tracker.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A6F9C3BF27AF4252002B7680 /* calorie_tracker (macOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A6F9C3CE27AF4252002B7680 /* Build configuration list for PBXNativeTarget "calorie_tracker (macOS)" */;
+			buildPhases = (
+				A6F9C3BC27AF4252002B7680 /* Sources */,
+				A6F9C3BD27AF4252002B7680 /* Frameworks */,
+				A6F9C3BE27AF4252002B7680 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "calorie_tracker (macOS)";
+			productName = "calorie_tracker (macOS)";
+			productReference = A6F9C3C027AF4252002B7680 /* calorie_tracker.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A6F9C3AE27AF4251002B7680 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1310;
+				LastUpgradeCheck = 1330;
+				TargetAttributes = {
+					A6F9C3B927AF4252002B7680 = {
+						CreatedOnToolsVersion = 13.1;
+					};
+					A6F9C3BF27AF4252002B7680 = {
+						CreatedOnToolsVersion = 13.1;
+					};
+				};
+			};
+			buildConfigurationList = A6F9C3B127AF4251002B7680 /* Build configuration list for PBXProject "calorie_tracker" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A6F9C3AD27AF4251002B7680;
+			productRefGroup = A6F9C3BB27AF4252002B7680 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A6F9C3B927AF4252002B7680 /* calorie_tracker (iOS) */,
+				A6F9C3BF27AF4252002B7680 /* calorie_tracker (macOS) */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A6F9C3B827AF4252002B7680 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A6F9C3C727AF4252002B7680 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A6F9C3BE27AF4252002B7680 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A6F9C3C827AF4252002B7680 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A6F9C3B627AF4252002B7680 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A6F9C3DC27AF5A7F002B7680 /* item_cell.swift in Sources */,
+				A6F9C3E627AF6602002B7680 /* custom_field.swift in Sources */,
+				A675AA8F27B0F642001B137E /* calendar_view.swift in Sources */,
+				A675AA9327B1179F001B137E /* calendar_cell.swift in Sources */,
+				A675AA9127B0FB7E001B137E /* calendar.swift in Sources */,
+				A6F9C3D427AF4291002B7680 /* calorie_item.swift in Sources */,
+				A6F9C3DF27AF5B6E002B7680 /* colors.swift in Sources */,
+				A6F9C3D627AF49D8002B7680 /* data_model.swift in Sources */,
+				A6F9C3C527AF4252002B7680 /* ContentView.swift in Sources */,
+				A6466ED027B1D8F50014B96F /* small_label.swift in Sources */,
+				A6F9C3DA27AF5950002B7680 /* index.swift in Sources */,
+				A6F9C3E427AF61C4002B7680 /* ce_item.swift in Sources */,
+				A6F9C3C327AF4252002B7680 /* calorie_trackerApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A6F9C3BC27AF4252002B7680 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A6F9C3C627AF4252002B7680 /* ContentView.swift in Sources */,
+				A6F9C3C427AF4252002B7680 /* calorie_trackerApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		A6F9C3C927AF4252002B7680 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A6F9C3CA27AF4252002B7680 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		A6F9C3CC27AF4252002B7680 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
+				DEVELOPMENT_TEAM = 5KB7RDZ432;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Calorie Me";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.2;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.landersweb.calorie-tracker";
+				PRODUCT_NAME = calorie_tracker;
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A6F9C3CD27AF4252002B7680 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
+				DEVELOPMENT_TEAM = 5KB7RDZ432;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Calorie Me";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.2;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.landersweb.calorie-tracker";
+				PRODUCT_NAME = calorie_tracker;
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A6F9C3CF27AF4252002B7680 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5KB7RDZ432;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.landersweb.calorie-tracker";
+				PRODUCT_NAME = calorie_tracker;
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		A6F9C3D027AF4252002B7680 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5KB7RDZ432;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.landersweb.calorie-tracker";
+				PRODUCT_NAME = calorie_tracker;
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A6F9C3B127AF4251002B7680 /* Build configuration list for PBXProject "calorie_tracker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A6F9C3C927AF4252002B7680 /* Debug */,
+				A6F9C3CA27AF4252002B7680 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A6F9C3CB27AF4252002B7680 /* Build configuration list for PBXNativeTarget "calorie_tracker (iOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A6F9C3CC27AF4252002B7680 /* Debug */,
+				A6F9C3CD27AF4252002B7680 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A6F9C3CE27AF4252002B7680 /* Build configuration list for PBXNativeTarget "calorie_tracker (macOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A6F9C3CF27AF4252002B7680 /* Debug */,
+				A6F9C3D027AF4252002B7680 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A6F9C3AE27AF4251002B7680 /* Project object */;
+}
