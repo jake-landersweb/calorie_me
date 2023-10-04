@@ -15,31 +15,52 @@ struct Index: View {
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var dmodel: DataModel
     
+    let date: Date
+    @State var items: [CalorieItem] = []
+    
     // for title
-    func getDate() -> String {
+    var titleString: String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "LLL"
-        let month = dateFormatter.string(from: dmodel.date)
-        return "\(month), \(Calendar.current.component(.day, from: dmodel.date))"
+        let month = dateFormatter.string(from: date)
+        return "\(month), \(Calendar.current.component(.day, from: date))"
+    }
+    
+    var totalCalories: Int {
+        var total: Int = 0
+        for item in items {
+            total += item.calories
+        }
+        return total
     }
     
     var body: some View {
         // list with removed insets so it acts as a scrollview more or less
         // I was going for a custom implementation, but scrollview in swiftui is broken
         List {
-            if dmodel.items != nil {
-                ForEach(dmodel.items!, id:\.id) { item in
-                    ItemCell(item: item)
-                        .listRowInsets(EdgeInsets())
+            ForEach(items, id:\.id) { item in
+                ItemCell(onAction: onAction, onDelete: onDelete, item: item)
+                    .listRowInsets(EdgeInsets())
+            }
+        }
+        .navigationTitle(titleString)
+        .navigationBarTitleDisplayMode(.large)
+        .onAppear {
+            DispatchQueue.global(qos: .background).async {
+                // Perform background work
+                let result = dmodel.decodeItems(date: date)
+
+                DispatchQueue.main.async {
+                    // Update UI
+                    self.items = result
+                    print("\(items.count) Items found")
                 }
             }
         }
-        .navigationTitle(getDate())
-        .navigationBarTitleDisplayMode(.large)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: {
-                    dmodel.sheet = .create
+                    dmodel.sheet = .create(onAction: onAction, date: date)
                 }) {
                     Image(systemName: "plus")
                 }
@@ -47,19 +68,38 @@ struct Index: View {
             // show a total count in the top left
             ToolbarItem(placement: .navigationBarLeading) {
                 // total count
-                Text("Total: \(dmodel.totalCalories())")
+                Text("Total: \(totalCalories)")
                     .font(.system(size: 18, weight: .medium, design: .default))
             }
         }
         .onDisappear {
             // check if items are empty and delete the file if it is
-            if dmodel.items != nil {
-                if dmodel.items!.isEmpty {
-                    print("there are no items for this day, deleting the file")
-                    dmodel.deleteCurrentFile()
-                }
+            if items.isEmpty {
+                print("there are no items for this day, deleting the file")
+                dmodel.deleteFile(date: date)
+            } else {
+                // save the files to the index file
+                dmodel.encodeItems(date: date, items: items)
             }
-            dmodel.isOnView = false
+        }
+    }
+    
+    func onAction(item: CalorieItem) -> Void {
+        onDelete(item: item)
+        items.append(item)
+        sortItems()
+        dmodel.encodeItems(date: date, items: items)
+    }
+    
+    func onDelete(item: CalorieItem) -> Void {
+        items.removeAll {
+            $0.id == item.id
+        }
+    }
+    
+    func sortItems() {
+        items.sort {
+            $0.id > $1.id
         }
     }
 }

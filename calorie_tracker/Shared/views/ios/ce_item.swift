@@ -18,19 +18,34 @@ struct CEItem: View {
     
     @EnvironmentObject private var dmodel: DataModel
     
+    var onAction: (CalorieItem) -> Void
     @State private var item: CalorieItem
     @State private var date: Date
     private var isCreate: Bool
     
     // constructor without item for creating
-    init(date: Date) {
+    init(onAction: @escaping (CalorieItem) -> Void, date: Date) {
+        self.onAction = onAction
         self._item = State(initialValue: CalorieItem(title: "", description: "", category: .breakfast, calories: 0))
         self.isCreate = true
-        self._date = State(initialValue: date)
+        // compose a date where the time matches now
+        let calendar = Calendar.current
+        var components = calendar.dateComponents([.year, .month, .day], from: date)
+        let timeComponents = calendar.dateComponents([.hour, .minute, .second], from: Date.now)
+        components.hour = timeComponents.hour
+        components.minute = timeComponents.minute
+        components.second = timeComponents.second
+        
+        if let newDate = calendar.date(from: components) {
+            self._date = State(initialValue: newDate)
+        } else {
+            self._date = State(initialValue: date)
+        }
     }
     
     // constructor with item for editing
-    init(item: CalorieItem) {
+    init(onAction: @escaping (CalorieItem) -> Void, item: CalorieItem) {
+        self.onAction = onAction
         self._item = State(initialValue: item)
         self.isCreate = false
         self._date = State(initialValue: item.getDate())
@@ -75,15 +90,8 @@ struct CEItem: View {
                             .submitLabel(.done)
                     }
                     // date picker
-                    VStack(spacing: 5) {
-                        HStack {
-                            SmallLabel(text: "Date")
-                            Spacer()
-                        }
-                        DatePicker("", selection: $date, displayedComponents: .hourAndMinute)
-                            .datePickerStyle(WheelDatePickerStyle())
-                            .labelsHidden()
-                    }
+                    DatePicker("Date / Time", selection: $date, displayedComponents: .hourAndMinute)
+                        .datePickerStyle(GraphicalDatePickerStyle())
                     // category picker
                     VStack(spacing: 10) {
                         HStack {
@@ -110,36 +118,13 @@ struct CEItem: View {
                             .frame(width: 120)
                         // buttons for add and sub
                         HStack(spacing: 0) {
-                            calorieIncrementer(icon: "minus", weight: .bold, color: Color.red.opacity(0.3), amount: -100)
-                            calorieIncrementer(icon: "minus", weight: .light, color: Color.red.opacity(0.1), amount: -25)
-                            calorieIncrementer(icon: "plus", weight: .light, color: Color.green.opacity(0.1), amount: 25)
-                            calorieIncrementer(icon: "plus", weight: .bold, color: Color.green.opacity(0.3), amount: 100)
+                            calorieIncrementer(icon: "minus", weight: .bold, color: Color.black.opacity(0.15), amount: -100)
+                            calorieIncrementer(icon: "minus", weight: .light, color: Color.black.opacity(0.07), amount: -25)
+                            calorieIncrementer(icon: "plus", weight: .light, color: Color.blue.opacity(0.1), amount: 25)
+                            calorieIncrementer(icon: "plus", weight: .bold, color: Color.blue.opacity(0.3), amount: 100)
                         }
                         .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
                     }
-                    // button
-                    Button(action: {
-                        // set date field
-                        item.setDate(date: date)
-                        if isCreate {
-                            // add item
-                            dmodel.addItem(item: item)
-                        } else {
-                            dmodel.updateItem(item: item)
-                        }
-                        // dismiss the sheet
-                        presentationMode.wrappedValue.dismiss()
-                    }) {
-                        Text(isCreate ? "Create" : "Update")
-                            .font(.system(size: 20, weight: .medium, design: .default))
-                            .foregroundColor(Color.white)
-                            .frame(maxWidth: .infinity)
-                            .padding(.vertical, 15)
-                            .background(Color.blue)
-                            .clipShape(Capsule())
-                            .padding(.horizontal, 32)
-                    }
-                    .padding(.top, 25)
                 }
                 .frame(maxWidth: .infinity)
                 .padding(10)
@@ -157,10 +142,36 @@ struct CEItem: View {
             .navigationTitle(isCreate ? "Create Item" : "Update Item")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: {
+                        presentationMode.wrappedValue.dismiss()
+                    }) {
+                        Text("Cancel")
+                            .font(.system(size: 18))
+                            .foregroundColor(Color.red.opacity(0.7))
+                    }
+                }
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    close
+                    Button(action: {
+                        if item.title.count > 0 {
+                            item.setDate(date: date)
+                            onAction(item)
+                            
+                            // dismiss the sheet
+                            presentationMode.wrappedValue.dismiss()
+                        }
+                    }) {
+                        Text("Save")
+                            .font(.system(size: 18, weight: .medium, design: .default))
+                            .foregroundColor(.blue)
+                            .opacity(item.title.count > 0 ? 1 : 0.5)
+                    }
                 }
             }
+        }
+        .onTapGesture {
+            // hide the keyboard
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
         }
     }
     
@@ -202,17 +213,6 @@ struct CEItem: View {
                     .foregroundColor(Color.white)
             }
             .aspectRatio(1, contentMode: .fill)
-        }
-    }
-    
-    // close model
-    private var close: some View {
-        Button(action: {
-            presentationMode.wrappedValue.dismiss()
-        }) {
-            Text("Cancel")
-                .font(.system(size: 18, weight: .medium, design: .default))
-                .foregroundColor(.blue)
         }
     }
 }

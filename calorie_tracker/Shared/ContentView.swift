@@ -13,40 +13,88 @@ import SwiftUI
  and shows a sheet when requested
  */
 struct ContentView: View {
-    @Environment(\.scenePhase) var scenePhase
+    @Environment(\.calendar) var calendar
     @StateObject var dmodel = DataModel()
+    @State private var years: [Int] = []
     
-    @State var date = Date()
+    @State private var selectedDate = Date()
+    @State private var selectedYear = 2023
     
-    @State private var wasInBackground = false
-    
-    init() {
-        // change the font for large nav titles
-        UINavigationBar.appearance().largeTitleTextAttributes = [.font : UIFont.systemFont(ofSize: 40, weight: .ultraLight)]
+    private var year: DateInterval {
+        let calendar = Calendar.current
+        let yearComponents = DateComponents(year: selectedYear)
+        let startOfYear = calendar.date(from: yearComponents)!
+        let endOfYear = calendar.date(byAdding: .year, value: 1, to: startOfYear)!
+        let interval = DateInterval(start: startOfYear, end: endOfYear)
+        return interval
     }
     
     var body: some View {
-        Group {
-            SelectDate()
+        NavigationView {
+            ScrollViewReader { reader in
+                ScrollView {
+                    CalendarView(interval: year) { date in
+                        CalendarCell(date: date, selectedDate: $selectedDate)
+                            .id(date)
+                    }
+                    .id(selectedYear)
+                }
+                .onAppear {
+                    let calendar = Calendar.current
+                    let month = calendar.component(.month, from: Date())
+                    reader.scrollTo(month)
+                }
+            }
+            .navigationTitle("Select Date")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Picker("Select Year", selection: $selectedYear) {
+                        ForEach(years, id: \.self) { year in
+                            Text(formatNumber(year)).tag(year)
+                        }
+                    }
+                    .pickerStyle(DefaultPickerStyle())
+                    .frame(width: 80)
+                    .labelsHidden()
+                }
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button {
+                        dmodel.sheet = .workout_notepad
+                    } label: {
+                        Image(systemName: "dumbbell.fill")
+                            .foregroundColor(Color.wn)
+                            .rotationEffect(Angle(degrees: -45))
+                    }
+                }
+            }
         }
+        .navigationViewStyle(StackNavigationViewStyle())
         .sheet(isPresented: $dmodel.showSheet) {
             dmodel.sheetView()
         }
         .environmentObject(dmodel)
-        .onChange(of: scenePhase) { newPhase in
-            // check for changes in app state
-            if newPhase == .active {
-                print("Active")
-                if (wasInBackground) {
-                    wasInBackground = false
-                    dmodel.reload()
+        .onAppear {
+            let tmp = Calendar.current.dateComponents([.year], from: Date())
+            withAnimation {
+                selectedYear = tmp.year!
+                years = Array(tmp.year!-5...tmp.year!)
+            }
+            
+            // check if wn ad has been shown
+            if let flag = UserDefaults.standard.object(forKey: "shownWorkoutNotepad") as? Bool {
+                if !flag {
+                    dmodel.sheet = .workout_notepad
                 }
-            } else if newPhase == .inactive {
-                print("Inactive")
-            } else if newPhase == .background {
-                print("Background")
-                wasInBackground = true
+            } else {
+                dmodel.sheet = .workout_notepad
+                UserDefaults.standard.set(true, forKey: "shownWorkoutNotepad")
             }
         }
     }
+    
+    func formatNumber(_ number: Int) -> String {
+       let formatter = NumberFormatter()
+       formatter.groupingSeparator = ""
+       return formatter.string(from: NSNumber(value: number)) ?? ""
+   }
 }

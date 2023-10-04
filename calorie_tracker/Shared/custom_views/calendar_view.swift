@@ -70,7 +70,7 @@ struct WeekView<DateView>: View where DateView: View {
         return calendar.generateDates(
             inside: weekInterval,
             matching: DateComponents(hour: 0, minute: 0, second: 0)
-        ).reversed()
+        )
     }
 
     var body: some View {
@@ -115,15 +115,13 @@ struct MonthView<DateView>: View where DateView: View {
         return calendar.generateDates(
             inside: monthInterval,
             matching: DateComponents(hour: 0, minute: 0, second: 0, weekday: calendar.firstWeekday)
-        ).reversed()
+        )
     }
 
     private var header: some View {
-        let component = calendar.component(.month, from: month)
-        let formatter = component == 12 ? DateFormatter.monthAndYear : .month
         return HStack {
-            Text(formatter.string(from: month))
-                .font(.system(size: 40, weight: .ultraLight, design: .default))
+            Text(DateFormatter.month.string(from: month))
+                .font(.system(size: 24, weight: .semibold, design: .default))
                 .padding()
             Spacer(minLength: 0)
         }
@@ -161,34 +159,34 @@ struct MonthView<DateView>: View where DateView: View {
 struct CalendarView<DateView>: View where DateView: View {
     @Environment(\.calendar) var calendar
 
-    let interval: DateInterval
-    let content: (Date) -> DateView
+      let interval: DateInterval
+      let content: (Date) -> DateView
 
-    init(interval: DateInterval, @ViewBuilder content: @escaping (Date) -> DateView) {
-        self.interval = interval
-        self.content = content
-    }
+      init(interval: DateInterval, @ViewBuilder content: @escaping (Date) -> DateView) {
+          self.interval = interval
+          self.content = content
+      }
 
-    private var months: [Date] {
-        calendar.generateDates(
-            inside: interval,
-            matching: DateComponents(day: 1, hour: 0, minute: 0, second: 0)
-        ).reversed()
-    }
-    
-    private func getMonth(date: Date) -> Int {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MM"
-        return Int(formatter.string(from: date)) ?? 0
-    }
+      private var months: [Date] {
+          calendar.generateDates(
+              inside: interval,
+              matching: DateComponents(day: 1, hour: 0, minute: 0, second: 0)
+          )
+      }
+      
+      private func getMonth(date: Date) -> Int {
+          let formatter = DateFormatter()
+          formatter.dateFormat = "MM"
+          return Int(formatter.string(from: date)) ?? 0
+      }
 
-    var body: some View {
-        LazyVStack {
-            ForEach(months, id: \.self) { month in
-                MonthView(month: month, content: self.content)
-                    .id(getMonth(date: month))
-                    .padding(.horizontal, 5)
-            }
-        }
-    }
+      var body: some View {
+          LazyVStack {
+              ForEach(months, id: \.self) { month in
+                  MonthView(month: month, content: self.content)
+                      .id(getMonth(date: month))
+                      .padding(.horizontal, 5)
+              }
+          }
+      }
 }

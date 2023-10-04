@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		A6466ED027B1D8F50014B96F /* small_label.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6466ECF27B1D8F50014B96F /* small_label.swift */; };
-		A675AA8F27B0F642001B137E /* calendar_view.swift in Sources */ = {isa = PBXBuildFile; fileRef = A675AA8E27B0F642001B137E /* calendar_view.swift */; };
-		A675AA9127B0FB7E001B137E /* calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A675AA9027B0FB7E001B137E /* calendar.swift */; };
+		A64E8E8E2ACCED1F0016154A /* WorkoutNotepad.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64E8E8D2ACCED1F0016154A /* WorkoutNotepad.swift */; };
+		A675AA9127B0FB7E001B137E /* calendar_view.swift in Sources */ = {isa = PBXBuildFile; fileRef = A675AA9027B0FB7E001B137E /* calendar_view.swift */; };
 		A675AA9327B1179F001B137E /* calendar_cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A675AA9227B1179F001B137E /* calendar_cell.swift */; };
+		A6CB44542AC67867009F356B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F9C3B427AF4251002B7680 /* ContentView.swift */; };
 		A6F9C3C327AF4252002B7680 /* calorie_trackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F9C3B327AF4251002B7680 /* calorie_trackerApp.swift */; };
 		A6F9C3C427AF4252002B7680 /* calorie_trackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F9C3B327AF4251002B7680 /* calorie_trackerApp.swift */; };
 		A6F9C3C527AF4252002B7680 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F9C3B427AF4251002B7680 /* ContentView.swift */; };
-		A6F9C3C627AF4252002B7680 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F9C3B427AF4251002B7680 /* ContentView.swift */; };
 		A6F9C3C727AF4252002B7680 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6F9C3B527AF4252002B7680 /* Assets.xcassets */; };
 		A6F9C3C827AF4252002B7680 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6F9C3B527AF4252002B7680 /* Assets.xcassets */; };
 		A6F9C3D427AF4291002B7680 /* calorie_item.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F9C3D327AF4291002B7680 /* calorie_item.swift */; };
@@ -28,8 +28,8 @@
 
 /* Begin PBXFileReference section */
 		A6466ECF27B1D8F50014B96F /* small_label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = small_label.swift; sourceTree = "<group>"; };
-		A675AA8E27B0F642001B137E /* calendar_view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calendar_view.swift; sourceTree = "<group>"; };
-		A675AA9027B0FB7E001B137E /* calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calendar.swift; sourceTree = "<group>"; };
+		A64E8E8D2ACCED1F0016154A /* WorkoutNotepad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutNotepad.swift; sourceTree = "<group>"; };
+		A675AA9027B0FB7E001B137E /* calendar_view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calendar_view.swift; sourceTree = "<group>"; };
 		A675AA9227B1179F001B137E /* calendar_cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calendar_cell.swift; sourceTree = "<group>"; };
 		A6F9C3B327AF4251002B7680 /* calorie_trackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calorie_trackerApp.swift; sourceTree = "<group>"; };
 		A6F9C3B427AF4251002B7680 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -135,7 +135,6 @@
 			children = (
 				A6F9C3E327AF61C4002B7680 /* ce_item.swift */,
 				A6F9C3D927AF5950002B7680 /* index.swift */,
-				A675AA8E27B0F642001B137E /* calendar_view.swift */,
 				A675AA9227B1179F001B137E /* calendar_cell.swift */,
 			);
 			path = ios;
@@ -153,8 +152,9 @@
 			isa = PBXGroup;
 			children = (
 				A6F9C3E527AF6601002B7680 /* custom_field.swift */,
-				A675AA9027B0FB7E001B137E /* calendar.swift */,
+				A675AA9027B0FB7E001B137E /* calendar_view.swift */,
 				A6466ECF27B1D8F50014B96F /* small_label.swift */,
+				A64E8E8D2ACCED1F0016154A /* WorkoutNotepad.swift */,
 			);
 			path = custom_views;
 			sourceTree = "<group>";
@@ -259,12 +259,12 @@
 			files = (
 				A6F9C3DC27AF5A7F002B7680 /* item_cell.swift in Sources */,
 				A6F9C3E627AF6602002B7680 /* custom_field.swift in Sources */,
-				A675AA8F27B0F642001B137E /* calendar_view.swift in Sources */,
 				A675AA9327B1179F001B137E /* calendar_cell.swift in Sources */,
-				A675AA9127B0FB7E001B137E /* calendar.swift in Sources */,
+				A675AA9127B0FB7E001B137E /* calendar_view.swift in Sources */,
 				A6F9C3D427AF4291002B7680 /* calorie_item.swift in Sources */,
 				A6F9C3DF27AF5B6E002B7680 /* colors.swift in Sources */,
 				A6F9C3D627AF49D8002B7680 /* data_model.swift in Sources */,
+				A64E8E8E2ACCED1F0016154A /* WorkoutNotepad.swift in Sources */,
 				A6F9C3C527AF4252002B7680 /* ContentView.swift in Sources */,
 				A6466ED027B1D8F50014B96F /* small_label.swift in Sources */,
 				A6F9C3DA27AF5950002B7680 /* index.swift in Sources */,
@@ -277,7 +277,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6F9C3C627AF4252002B7680 /* ContentView.swift in Sources */,
+				A6CB44542AC67867009F356B /* ContentView.swift in Sources */,
 				A6F9C3C427AF4252002B7680 /* calorie_trackerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -402,7 +402,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 5KB7RDZ432;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -412,12 +412,12 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.landersweb.calorie-tracker";
 				PRODUCT_NAME = calorie_tracker;
 				SDKROOT = iphoneos;
@@ -433,7 +433,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 5KB7RDZ432;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -443,12 +443,12 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.landersweb.calorie-tracker";
 				PRODUCT_NAME = calorie_tracker;
 				SDKROOT = iphoneos;

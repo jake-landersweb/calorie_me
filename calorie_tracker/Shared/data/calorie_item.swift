@@ -35,7 +35,7 @@ struct CalorieItem: Codable {
         self.title = title
         self.description = description
         self.category = category
-        self.date = Date().ISO8601Format()
+        self.date = Date.now.ISO8601Format()
         self.calories = calories
     }
     

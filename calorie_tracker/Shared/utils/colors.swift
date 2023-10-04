@@ -22,4 +22,6 @@ extension Color {
     public static let lunch = Color(red: 235/255, green: 113/255, blue: 123/255)
     public static let dinner = Color(red: 113/255, green: 141/255, blue: 235/255)
     public static let water = Color(red: 113/255, green: 196/255, blue: 235/255)
+    
+    public static let wn = Color(hex: "#418a2f")
 }

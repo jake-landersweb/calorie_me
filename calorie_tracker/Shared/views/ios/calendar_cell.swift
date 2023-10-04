@@ -17,77 +17,67 @@ struct CalendarCell: View {
     
     @Binding var selectedDate: Date
     
-    @State private var hasFile: Bool = false
-    
     var body: some View {
         Group {
-            if date < Calendar.current.date(byAdding: .minute, value: 1, to: Date())! {
-                NavigationLink(destination: Index()) {
-                    home
-                }
-                .simultaneousGesture(TapGesture().onEnded{
-                    selectedDate = date
-                    dmodel.date = date
-                    print(dmodel.generateFilename(date: date))
-                    dmodel.filename = dmodel.generateFilename(date: date)
-                })
+            NavigationLink(destination: Index(date: date)) {
+                home
+            }
+            .simultaneousGesture(TapGesture().onEnded{
+                selectedDate = date
+            })
+        }
+    }
+    
+    var foregoundColor: Color {
+        if calendar.isDate(Date(), inSameDayAs: date) {
+            if calendar.isDate(selectedDate, inSameDayAs: date) {
+                return Color.white
             } else {
-                home.opacity(0.3)
+                return Color.blue
+            }
+        } else {
+            if calendar.isDate(selectedDate, inSameDayAs: date) {
+                return Color.blue
+            } else {
+                return Color.textColor(colorScheme: colorScheme)
             }
         }
-        .onAppear {
-            // only check if file exists if the date is less than the current date
-            if date < Calendar.current.date(byAdding: .minute, value: 1, to: Date())! {
-                hasFile = dmodel.fileExists(name: dmodel.generateFilename(date: date))
+    }
+    
+    var backgroundColor: Color {
+        if calendar.isDate(Date(), inSameDayAs: date) {
+            if calendar.isDate(selectedDate, inSameDayAs: date) {
+                return Color.blue
+            } else {
+                return Color.white
+            }
+        } else {
+            if calendar.isDate(selectedDate, inSameDayAs: date) {
+                return Color.blue.opacity(0.3)
+            } else {
+                return Color.white
             }
         }
     }
     
     var home: some View {
-        ZStack(alignment: .bottom) {
-            if calendar.isDate(Date(), inSameDayAs: date) {
-                // stack so cells are constant size
-                ZStack {
-                    Text("30")
-                        .hidden()
-                        .padding(12)
-                        .background(calendar.isDate(selectedDate, inSameDayAs: date) ? Color.blue : Color.clear)
-                        .clipShape(Circle())
-                        .padding(.vertical, 4)
-                    Text(String(self.calendar.component(.day, from: date)))
-                        .foregroundColor(calendar.isDate(selectedDate, inSameDayAs: date) ? Color.white : Color.blue)
-                        .font(.system(size: 22, weight: calendar.isDate(selectedDate, inSameDayAs: date) ? .medium : .regular, design: .default))
-                    // show a dot if there is data for that day
-                    if hasFile {
-                        VStack {
-                            Spacer()
-                            Circle()
-                                .fill(calendar.isDate(selectedDate, inSameDayAs: date) ? .clear : .textColor(colorScheme: colorScheme).opacity(0.3))
-                                .frame(width: 6)
-                                .padding(.bottom, -30)
-                        }
-                    }
-                }
-            } else {
-                ZStack {
-                    Text("30")
-                        .hidden()
-                        .padding(12)
-                        .background(calendar.isDate(selectedDate, inSameDayAs: date) ? Color.blue.opacity(0.1) : Color.clear)
-                        .clipShape(Circle())
-                        .padding(.vertical, 4)
-                    Text(String(self.calendar.component(.day, from: date)))
-                        .foregroundColor(calendar.isDate(selectedDate, inSameDayAs: date) ? Color.blue : .textColor(colorScheme: colorScheme))
-                        .font(.system(size: calendar.isDate(selectedDate, inSameDayAs: date) ? 22 : 20, weight: calendar.isDate(selectedDate, inSameDayAs: date) ? .medium : .regular, design: .default))
-                    if hasFile {
-                        VStack {
-                            Spacer()
-                            Circle()
-                                .fill(calendar.isDate(selectedDate, inSameDayAs: date) ? .clear : .textColor(colorScheme: colorScheme).opacity(0.3))
-                                .frame(width: 6)
-                                .padding(.bottom, -30)
-                        }
-                    }
+        ZStack {
+            Text("30")
+                .hidden()
+                .padding(12)
+                .background(backgroundColor)
+                .clipShape(Circle())
+                .padding(.vertical, 4)
+            Text(String(self.calendar.component(.day, from: date)))
+                .foregroundColor(foregoundColor)
+                .font(.system(size: calendar.isDate(selectedDate, inSameDayAs: date) ? 22 : 20, weight: calendar.isDate(selectedDate, inSameDayAs: date) ? .medium : .regular, design: .default))
+            if dmodel.fileExists(date: date) {
+                VStack {
+                    Spacer()
+                    Circle()
+                        .fill(calendar.isDate(selectedDate, inSameDayAs: date) ? foregoundColor : .textColor(colorScheme: colorScheme).opacity(0.3))
+                        .frame(width: 6)
+                        .padding(.bottom, 7)
                 }
             }
         }

@@ -13,104 +13,33 @@ import SwiftUI
  */
 class DataModel: ObservableObject {
     // for faster identification of what files exist for calendar view
-    @Published var indexes: [String]?
+    @Published var indexes: Set<String> = []
+    
     // list of current items for the day
-    @Published var items: [CalorieItem]?
-    // current date the user is viewing
-    @Published var date = Date()
-    // whether the app is open to a day, need this value to properly reload data when in background
-    @Published var isOnView = false
+//    @Published var items: [CalorieItem]?
     
     init() {
         // get index file on startup
         decodeIndex()
     }
     
-    // current filename the user is viewing
-    var filename: String = "" {
-        didSet {
-            // when set, set isOnView and decode the items from the given filename
-            isOnView = true
-            decodeItems()
-        }
-    }
-    
-    func addItem(item: CalorieItem) {
-        if self.items != nil {
-            // add to list
-            self.items!.append(item)
-            // save to database
-            encodeItems(items: self.items!)
-            // sort items by date
-            sortItems()
-        }
-    }
-
-    func updateItem(item: CalorieItem) {
-        if self.items != nil {
-            // check if item exists
-            if self.items!.contains(where: {$0.id == item.id}) {
-                // remove the old item
-                self.items!.removeAll(where: {$0.id == item.id})
-                // add the new item
-                addItem(item: item)
-            }
-        }
-    }
-
-    func deleteItem(item: CalorieItem) {
-        if self.items != nil {
-            // check the item exists
-            if self.items!.contains(where: {$0.id == item.id}) {
-                // remove the item
-                self.items!.removeAll(where: {$0.id == item.id})
-                // save to database
-                encodeItems(items: self.items!)
-            }
-        }
-    }
-    
     // sorts items by date
-    func sortItems() {
-        if self.items != nil {
-            self.items!.sort {
-                $0.getDate() < $1.getDate()
-            }
-        }
-    }
-    
-    // get total calories for the current item list
-    func totalCalories() -> Int {
-        if self.items != nil {
-            var total: Int = 0
-            for (item) in self.items! {
-                total += item.calories
-            }
-            return total
-        } else {
-            return 0
+    func sortItems(items: [CalorieItem]) -> [CalorieItem] {
+        return items.sorted {
+            $0.getDate() < $1.getDate()
         }
     }
     
     // check if filename exists in index
-    func fileExists(name: String) -> Bool {
-        if self.indexes != nil {
-            return indexes!.contains(where: { $0 == name })
-        } else {
-            return false
-        }
-    }
-    
-    // reloads the item list if user is on a day
-    func reload() {
-        if isOnView {
-            decodeItems()
-        }
+    func fileExists(date: Date) -> Bool {
+        var filename = generateFilename(date: date)
+        return indexes.contains(filename)
     }
     
     // writes the passed item list to the current filename
-    func encodeItems(items: [CalorieItem]) {
+    func encodeItems(date: Date, items: [CalorieItem]) {
         do {
+            let filename = generateFilename(date: date)
             // sort the items
             let sortedItems = items.sorted {
                 $0.getDate() > $1.getDate()
@@ -123,14 +52,17 @@ class DataModel: ObservableObject {
             // write json form of data to file
             try JSONEncoder().encode(sortedItems)
                 .write(to: fileURL)
+            indexes.insert(filename)
+            encodeIndex(indexes: indexes)
         } catch {
             print(error)
         }
     }
     
     // sets items to whatever is found in the current filename
-    func decodeItems() {
+    func decodeItems(date: Date) -> [CalorieItem] {
         do {
+            let filename = generateFilename(date: date)
             // get url
             let fileURL = try FileManager.default
                 .url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
@@ -140,27 +72,24 @@ class DataModel: ObservableObject {
             if FileManager.default.fileExists(atPath: fileURL.path) {
                 print("file exists")
                 let data = try Data(contentsOf: fileURL)
-                self.items = try JSONDecoder().decode([CalorieItem].self, from: data)
-                sortItems()
-                print("successfully decoded json")
+                let items = try JSONDecoder().decode([CalorieItem].self, from: data)
+                return sortItems(items: items)
             } else {
                 // here because the file has not been created yet
                 print("file does not exist")
-                self.items = []
-                encodeItems(items: self.items!)
-                // add filename to index
-                indexes!.append(filename)
-                encodeIndex(indexes: self.indexes!)
+                return []
             }
         } catch {
             print(error)
             print("the data is bad")
+            return []
         }
     }
     
     // deletes the current filename
-    func deleteCurrentFile() {
+    func deleteFile(date: Date) {
         do {
+            let filename = generateFilename(date: date)
             let fileURL = try FileManager.default
                 .url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
                 .appendingPathComponent(filename)
@@ -170,8 +99,8 @@ class DataModel: ObservableObject {
                 try FileManager.default.removeItem(at: fileURL)
                 print("successfully deleted file")
                 // remove the filename from the index list
-                indexes!.removeAll(where: { $0 == filename })
-                encodeIndex(indexes: self.indexes!)
+                indexes.remove(filename)
+                encodeIndex(indexes: self.indexes)
                 print("updated index list")
             } else {
                 print("file to delete does not exist")
@@ -183,13 +112,13 @@ class DataModel: ObservableObject {
     }
     
     // encodes the passed indexes into index.json
-    func encodeIndex(indexes: [String]) {
+    func encodeIndex(indexes: Set<String>) {
         do {
             let fileURL = try FileManager.default
                 .url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
                 .appendingPathComponent("index.json")
 
-            try JSONEncoder().encode(indexes)
+            try JSONEncoder().encode(Array(indexes))
                 .write(to: fileURL)
         } catch {
             print(error)
@@ -206,14 +135,15 @@ class DataModel: ObservableObject {
             if FileManager.default.fileExists(atPath: fileURL.path) {
                 print("index file exists")
                 let data = try Data(contentsOf: fileURL)
-                self.indexes = try JSONDecoder().decode([String].self, from: data)
-                print(self.indexes!)
+                let tmp = try JSONDecoder().decode([String].self, from: data)
+                self.indexes = Set(tmp)
                 print("successfully decoded index json")
+                print(self.indexes)
             } else {
                 print("index file does not exist")
                 // here because the file has not been created yet
                 self.indexes = []
-                encodeIndex(indexes: self.indexes!)
+                encodeIndex(indexes: self.indexes)
             }
         } catch {
             print(error)
@@ -232,17 +162,20 @@ class DataModel: ObservableObject {
     // available sheets
     enum Sheet {
         case none
-        case create
-        case edit(item: CalorieItem)
+        case workout_notepad
+        case create(onAction: (CalorieItem) -> Void, date: Date)
+        case edit(onAction: (CalorieItem) -> Void,item: CalorieItem)
     }
     
     // show correct view for currently selected sheet sheet
     func sheetView() -> AnyView {
         switch (sheet) {
-        case .create:
-            return AnyView(CEItem(date: date))
-        case .edit(item: let item):
-            return AnyView(CEItem(item: item))
+        case .workout_notepad:
+            return AnyView(WorkoutNotepad())
+        case .create(onAction: let onAction, date: let date):
+            return AnyView(CEItem(onAction: onAction, date: date))
+        case .edit(onAction: let onAction, item: let item):
+            return AnyView(CEItem(onAction: onAction, item: item))
         default:
             return AnyView(EmptyView())
         }
@@ -257,5 +190,19 @@ class DataModel: ObservableObject {
         let month = dateFormatter.string(from: date)
         let day = Calendar.current.component(.day, from: date)
         return "\(year).\(month).\(day)_database.json"
+    }
+    
+    func filenameToDate(filename: String) -> Date? {
+        let components = filename.split(separator: ".")
+        guard components.count >= 3 else { return nil }
+        
+        let year = String(components[0])
+        let month = String(components[1])
+        let dayString = String(components[2].split(separator: "_")[0])
+        
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.dateFormat = "yyyy LLLL d"
+        return dateFormatter.date(from: "\(year) \(month) \(dayString)")
     }
 }

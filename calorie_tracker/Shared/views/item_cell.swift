@@ -14,6 +14,9 @@ import SwiftUI
 struct ItemCell: View {
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var dmodel: DataModel
+    
+    var onAction: (CalorieItem) -> Void
+    var onDelete: (CalorieItem) -> Void
     var item: CalorieItem
     
     var body: some View {
@@ -56,12 +59,12 @@ struct ItemCell: View {
             // show a delete and edit because this cell is in a list
             Button("Delete") {
                 withAnimation(.spring()) {
-                    dmodel.deleteItem(item: item)
+                    onDelete(item)
                 }
             }
             .tint(.red)
             Button("Edit") {
-                dmodel.sheet = .edit(item: item)
+                dmodel.sheet = .edit(onAction: onAction, item: item)
             }
             .tint(.gray)
         }
