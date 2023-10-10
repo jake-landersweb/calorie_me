@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A62FC6972AD4CEA500455DBA /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62FC6962AD4CEA500455DBA /* SettingsView.swift */; };
 		A6466ED027B1D8F50014B96F /* small_label.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6466ECF27B1D8F50014B96F /* small_label.swift */; };
 		A64E8E8E2ACCED1F0016154A /* WorkoutNotepad.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64E8E8D2ACCED1F0016154A /* WorkoutNotepad.swift */; };
 		A675AA9127B0FB7E001B137E /* calendar_view.swift in Sources */ = {isa = PBXBuildFile; fileRef = A675AA9027B0FB7E001B137E /* calendar_view.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A62FC6962AD4CEA500455DBA /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		A6466ECF27B1D8F50014B96F /* small_label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = small_label.swift; sourceTree = "<group>"; };
 		A64E8E8D2ACCED1F0016154A /* WorkoutNotepad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutNotepad.swift; sourceTree = "<group>"; };
 		A675AA9027B0FB7E001B137E /* calendar_view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calendar_view.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				A675AA9027B0FB7E001B137E /* calendar_view.swift */,
 				A6466ECF27B1D8F50014B96F /* small_label.swift */,
 				A64E8E8D2ACCED1F0016154A /* WorkoutNotepad.swift */,
+				A62FC6962AD4CEA500455DBA /* SettingsView.swift */,
 			);
 			path = custom_views;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 				A6F9C3D427AF4291002B7680 /* calorie_item.swift in Sources */,
 				A6F9C3DF27AF5B6E002B7680 /* colors.swift in Sources */,
 				A6F9C3D627AF49D8002B7680 /* data_model.swift in Sources */,
+				A62FC6972AD4CEA500455DBA /* SettingsView.swift in Sources */,
 				A64E8E8E2ACCED1F0016154A /* WorkoutNotepad.swift in Sources */,
 				A6F9C3C527AF4252002B7680 /* ContentView.swift in Sources */,
 				A6466ED027B1D8F50014B96F /* small_label.swift in Sources */,

@@ -148,7 +148,7 @@ struct CEItem: View {
                     }) {
                         Text("Cancel")
                             .font(.system(size: 18))
-                            .foregroundColor(Color.red.opacity(0.7))
+                            .foregroundColor(Color.gray)
                     }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {

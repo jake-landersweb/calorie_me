@@ -61,9 +61,8 @@ struct ContentView: View {
                     Button {
                         dmodel.sheet = .workout_notepad
                     } label: {
-                        Image(systemName: "dumbbell.fill")
-                            .foregroundColor(Color.wn)
-                            .rotationEffect(Angle(degrees: -45))
+                        Image(systemName: "gear")
+                            .foregroundColor(Color.gray)
                     }
                 }
             }

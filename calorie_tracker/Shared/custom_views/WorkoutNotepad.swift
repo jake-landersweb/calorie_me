@@ -13,8 +13,6 @@ struct AssetItem {
 }
 
 struct WorkoutNotepad: View {
-    @Environment(\.presentationMode) private var presentationMode
-    
     let items: [AssetItem] = [
         AssetItem(title: "Workout Notepad is for planning and tracking workouts, with the same simplicity as Calorie Me.", asset: "RAW-dashboard"),
         AssetItem(title: "Workouts are playlists! The exercises are songs. Compose them dynamically to fit your needs.", asset: "RAW-wedit"),
@@ -23,53 +21,43 @@ struct WorkoutNotepad: View {
     ]
     
     var body: some View {
-        NavigationView {
-            ZStack {
-                Color(hex: "#e1dcd2").edgesIgnoringSafeArea(.all)
+        ZStack {
+            Color(hex: "#e1dcd2").edgesIgnoringSafeArea(.all)
+            VStack(alignment: .leading) {
                 VStack(alignment: .leading) {
-                    VStack(alignment: .leading) {
-                        VStack(alignment:.leading) {
-                            Text("Introducing")
-                                .font(.system(size: 20))
-                                .foregroundColor(.gray)
-                            Text("Workout Notepad")
-                                .font(.system(size: 28, weight: .semibold))
-                                .foregroundColor(Color.wn)
-                        }
-                    }
-                    .padding(20)
-                    TabView {
-                        ForEach(items, id: \.title) { item in
-                            cell(item: item)
-                        }
-                    }
-                    .tabViewStyle(PageTabViewStyle())
-                    .indexViewStyle(.page(backgroundDisplayMode: .always))
-                    Button {
-                        print("TODO")
-//                        UIApplication.shared.open(URL(string: "https://apps.apple.com/app/idYourAppID")!, options: [:], completionHandler: nil)
-                    } label: {
-                        Text("Download Now")
-                            .font(.system(size: 18,weight: .medium))
-                            .foregroundColor(Color.white)
-                            .frame(maxWidth: .infinity)
-                            .padding(10)
-                            .background(Color.wn)
-                            .cornerRadius(10)
-                            .padding([.horizontal, .bottom], 20)
+                    VStack(alignment:.leading) {
+                        Text("Introducing")
+                            .font(.system(size: 20))
+                            .foregroundColor(.gray)
+                        Text("Workout Notepad")
+                            .font(.system(size: 28, weight: .semibold))
+                            .foregroundColor(Color.wn)
                     }
                 }
-                .navigationTitle("Looking For More?")
-                .navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button("Close") {
-                            presentationMode.wrappedValue.dismiss()
-                        }
-                        .foregroundColor(Color.wn)
+                .padding([.horizontal, .top], 20)
+                TabView {
+                    ForEach(items, id: \.title) { item in
+                        cell(item: item)
                     }
+                }
+                .tabViewStyle(PageTabViewStyle())
+                .indexViewStyle(.page(backgroundDisplayMode: .always))
+                Button {
+                    print("TODO")
+                    UIApplication.shared.open(URL(string: "https://apps.apple.com/app/6453561144")!, options: [:], completionHandler: nil)
+                } label: {
+                    Text("Download Now")
+                        .font(.system(size: 18,weight: .medium))
+                        .foregroundColor(Color.white)
+                        .frame(maxWidth: .infinity)
+                        .padding(10)
+                        .background(Color.wn)
+                        .cornerRadius(10)
+                        .padding([.horizontal, .bottom], 20)
                 }
             }
+            .navigationTitle("Looking For More?")
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
     

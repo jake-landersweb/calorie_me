@@ -32,8 +32,7 @@ class DataModel: ObservableObject {
     
     // check if filename exists in index
     func fileExists(date: Date) -> Bool {
-        var filename = generateFilename(date: date)
-        return indexes.contains(filename)
+        return indexes.contains(generateFilename(date: date))
     }
     
     // writes the passed item list to the current filename
@@ -171,7 +170,7 @@ class DataModel: ObservableObject {
     func sheetView() -> AnyView {
         switch (sheet) {
         case .workout_notepad:
-            return AnyView(WorkoutNotepad())
+            return AnyView(SettingsView())
         case .create(onAction: let onAction, date: let date):
             return AnyView(CEItem(onAction: onAction, date: date))
         case .edit(onAction: let onAction, item: let item):

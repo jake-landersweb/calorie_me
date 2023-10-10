@@ -17,6 +17,7 @@ struct Index: View {
     
     let date: Date
     @State var items: [CalorieItem] = []
+    @State private var isLoading = true
     
     // for title
     var titleString: String {
@@ -38,9 +39,20 @@ struct Index: View {
         // list with removed insets so it acts as a scrollview more or less
         // I was going for a custom implementation, but scrollview in swiftui is broken
         List {
-            ForEach(items, id:\.id) { item in
-                ItemCell(onAction: onAction, onDelete: onDelete, item: item)
-                    .listRowInsets(EdgeInsets())
+            if isLoading {
+                ProgressView()
+            } else if items.count == 0 {
+                Text("There are no items for this day")
+                Button {
+                    dmodel.sheet = .create(onAction: onAction, date: date)
+                } label: {
+                    Text("Create New Item")
+                }
+            } else {
+                ForEach(items, id:\.id) { item in
+                    ItemCell(onAction: onAction, onDelete: onDelete, item: item)
+                        .listRowInsets(EdgeInsets())
+                }
             }
         }
         .navigationTitle(titleString)
@@ -54,6 +66,7 @@ struct Index: View {
                     // Update UI
                     self.items = result
                     print("\(items.count) Items found")
+                    isLoading = false
                 }
             }
         }
